@@ -2,9 +2,10 @@ import { Sidebar } from 'flowbite-react';
 import { HiUser, HiArrowSmRight } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { signoutSuccess } from '../redux/user/userSlice';
+import { signOut} from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 export default function DashSidebar() {
+  const dispatch=useDispatch()
   const location = useLocation();
   const [tab, setTab] = useState('');
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function DashSidebar() {
       if (!res.ok) {
         console.log(data.message);
       } else {
-        dispatch(signoutSuccess());
+        dispatch( signOut());
       }
     } catch (error) {
       console.log(error.message);
